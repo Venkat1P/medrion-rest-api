@@ -9,4 +9,4 @@ const UserSchema = mongoose.Schema(
         dept_description: String
     }
 );
-module.exports = mongoose.model('Department', UserSchema, 'department');
+module.exports = mongoose.model('Department', UserSchema, 'um_department');
