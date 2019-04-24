@@ -82,7 +82,7 @@ exports.update = (req, res) => {
 
     // Find Department and update it with the request body
     console.log(req.body)
-    Department.findByIdAndUpdate(req.params.id, req.body , {new: true})
+    Department.findByIdAndUpdate(req.params.id, req.body)
     .then(department => {
         if(!department) {
             return res.status(404).send({
