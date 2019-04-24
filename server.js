@@ -41,7 +41,12 @@ app.get('/api', (req, res) => {
 });
 
 require('./app/routes/user.routes.js')(app);
+// user management
 require('./app/routes/um/department.routes.js')(app);
+require('./app/routes/um/organization.routes.js')(app);
+require('./app/routes/um/role.routes.js')(app);
+require('./app/routes/um/privilege.routes.js')(app);
+require('./app/routes/um/user.routes.js')(app);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server is listening on port 3000");
