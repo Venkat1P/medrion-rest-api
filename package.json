@@ -1,0 +1,28 @@
+{
+  "name": "medrion-api",
+  "version": "1.0.0",
+  "description": "Medrion api with node and express with mongoDb(cloud clusters)",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://venkatsrikanth@bitbucket.org/latitudeworks/medrion-api.git"
+  },
+  "keywords": [
+    "Api",
+    "for",
+    "angular",
+    "medrion",
+    "app"
+  ],
+  "author": "venkat srikanth pingali",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/latitudeworks/medrion-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.3"
+  }
+}
