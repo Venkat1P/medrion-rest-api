@@ -26,4 +26,4 @@ const userUmSchema = mongoose.Schema(
         user_organization: String
     }
 );
-module.exports = mongoose.model('Department', userUmSchema, 'um_user');
+module.exports = mongoose.model('UMUser', userUmSchema, 'um_user');

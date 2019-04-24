@@ -1,26 +1,26 @@
-const User = require('../../models/um/user.model.js');
+const UMUser = require('../../models/um/user.model.js');
 
 
-// Create and Save a new User
+// Create and Save a new UMUser
 exports.create = (req, res) => {
     // Validate request
     
     if(!req.body) {
         return res.status(400).send({
-            message: "User body can not be empty"
+            message: "UMUser body can not be empty"
         });
     }
 
-    // Create a User
-    const user = new User(req.body);
+    // Create a UMUser
+    const user = new UMUser(req.body);
     console.log(user)
-    // Save User in the database
+    // Save UMUser in the database
     user.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the User."
+            message: err.message || "Some error occurred while creating the UMUser."
         });
     });
 };
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all users from the database.
 exports.findAll = (req, res) => {
-    User.find()
+    UMUser.find()
     .then(users => {
         console.log(users)
         res.send(users);
@@ -47,22 +47,22 @@ exports.findAll = (req, res) => {
 // Find a single user with a id
 exports.findOne = (req, res) => {
     console.log(req.params.id)
-    User.findById(req.params.id)
+    UMUser.findById(req.params.id)
     .then(user => {
         if(!user) {
             return res.status(404).send({
-                message: "User not found " + req.params.id
+                message: "UMUser not found " + req.params.id
             });            
         }
         res.send(user);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "User not found " + req.params.id
+                message: "UMUser not found " + req.params.id
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving User " + req.params.id
+            message: "Error retrieving UMUser " + req.params.id
         });
     });
 };
@@ -71,22 +71,22 @@ exports.findOne = (req, res) => {
 
 
 
-// Update a User identified by the id in the request
+// Update a UMUser identified by the id in the request
 exports.update = (req, res) => {
     // Validate Request
     if(!req.body) {
         return res.status(400).send({
-            message: "User body can not be empty"
+            message: "UMUser body can not be empty"
         });
     }
 
-    // Find User and update it with the request body
+    // Find UMUser and update it with the request body
     console.log(req.body)
-    User.findByIdAndUpdate(req.params.id, req.body , {new: true})
+    UMUser.findByIdAndUpdate(req.params.id, req.body , {new: true})
     .then(user => {
         if(!user) {
             return res.status(404).send({
-                message: "User not found with id " + req.params.id
+                message: "UMUser not found with id " + req.params.id
             });
         }
         console.log(user)
@@ -94,11 +94,11 @@ exports.update = (req, res) => {
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "User not found with id " + req.params.id
+                message: "UMUser not found with id " + req.params.id
             });                
         }
         return res.status(500).send({
-            message: "Error updating User with id " + req.params.id
+            message: "Error updating UMUser with id " + req.params.id
         });
     });
 };
@@ -110,19 +110,19 @@ exports.update = (req, res) => {
 // Delete a user with the specified userId in the request
 exports.delete = (req, res) => {
     console.log(req.body)
-    User.findByIdAndRemove(req.params.id)
+    UMUser.findByIdAndRemove(req.params.id)
     .then(user => {
         if(!user) {
             return res.status(404).send({
-                message: "User not found with id " + req.params.id
+                message: "UMUser not found with id " + req.params.id
             });
         }
         console.log(user)
-        res.send({message: "User deleted successfully!"});
+        res.send({message: "UMUser deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "User not found with id " + req.params.id
+                message: "UMUser not found with id " + req.params.id
             });                
         }
         console.log(user)

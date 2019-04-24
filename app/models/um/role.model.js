@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema(
+const roleSchema = mongoose.Schema(
     {
         role_code: String,
         role_name: String,
@@ -8,4 +8,4 @@ const Schema = mongoose.Schema(
         role_template: String
     }
 );
-module.exports = mongoose.model('Department', Schema, 'um_role');
+module.exports = mongoose.model('Role', roleSchema, 'um_role');

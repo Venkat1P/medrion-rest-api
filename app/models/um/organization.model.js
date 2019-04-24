@@ -31,4 +31,4 @@ const orgSchema = mongoose.Schema(
         org_sub_header: String
     }
 );
-module.exports = mongoose.model('Department', orgSchema, 'um_department');
+module.exports = mongoose.model('Organization', orgSchema, 'um_organization');

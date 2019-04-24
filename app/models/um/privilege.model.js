@@ -7,4 +7,4 @@ const privilegeSchema = mongoose.Schema(
         privilege_opr_name: String
     }
 );
-module.exports = mongoose.model('Department', privilegeSchema, 'um_privilege');
+module.exports = mongoose.model('Privilege', privilegeSchema, 'um_privilege');
