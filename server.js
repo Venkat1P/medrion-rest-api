@@ -31,7 +31,7 @@ mongoose.connect(dbConfig.url, {
 });
 
 // define a simple route
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
