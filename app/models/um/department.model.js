@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema(
+const deptSchema = mongoose.Schema(
     {
         dept_code: String,
         dept_name: String,
@@ -9,4 +9,4 @@ const Schema = mongoose.Schema(
         dept_description: String
     }
 );
-module.exports = mongoose.model('Department', Schema, 'um_department');
+module.exports = mongoose.model('Department', deptSchema, 'um_department');

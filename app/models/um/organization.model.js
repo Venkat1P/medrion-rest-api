@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema(
+const orgSchema = mongoose.Schema(
     {
         org_code: String,
         org_name: String,
@@ -12,7 +12,7 @@ const Schema = mongoose.Schema(
         org_eap: Boolean,
         org_grants: Boolean,
         org_valid_up_to: String,
-        org_assress_details: String,
+        org_address_details: String,
 
         org_address_1: String,
         org_address_1: String,
@@ -31,4 +31,4 @@ const Schema = mongoose.Schema(
         org_sub_header: String
     }
 );
-module.exports = mongoose.model('Department', Schema, 'um_organization');
+module.exports = mongoose.model('Department', orgSchema, 'um_organization');

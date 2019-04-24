@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema(
+const userUmSchema = mongoose.Schema(
     {
         user_code: String,
         user_type: String,
@@ -26,4 +26,4 @@ const Schema = mongoose.Schema(
         user_organization: String
     }
 );
-module.exports = mongoose.model('Department', Schema, 'um_user');
+module.exports = mongoose.model('Department', userUmSchema, 'um_user');
