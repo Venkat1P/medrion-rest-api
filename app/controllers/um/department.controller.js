@@ -1,4 +1,4 @@
-const Department = require('../models/department.model.js');
+const Department = require('../../models/um/department.model.js');
 
 
 // Create and Save a new Department

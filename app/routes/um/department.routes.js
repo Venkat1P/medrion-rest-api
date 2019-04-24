@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const departments = require('../controllers/department.controller.js');
+    const departments = require('../../controllers/um/department.controller.js');
 
     // Create a new Note
     app.post('/departments', departments.create);
