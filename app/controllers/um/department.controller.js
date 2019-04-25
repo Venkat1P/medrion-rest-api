@@ -10,7 +10,7 @@ exports.create = (req, res) => {
             message: "Department body can not be empty"
         });
     }
-
+    req.body['dept_status'] = "Active";
     // Create a Department
     const department = new Department(req.body);
     console.log(department)
