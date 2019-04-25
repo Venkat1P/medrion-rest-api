@@ -13,7 +13,7 @@ exports.create = (req, res) => {
 
     // Create a Organization
     const organization = new Organization(req.body);
-    console.log(organization)
+    req.body['org_status'] = "Active";
     // Save Organization in the database
     organization.save()
     .then(data => {

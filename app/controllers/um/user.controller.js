@@ -12,8 +12,9 @@ exports.create = (req, res) => {
     }
 
     // Create a UMUser
+    req.body['user_status'] = "Active";
     const user = new UMUser(req.body);
-    console.log(user)
+    
     // Save UMUser in the database
     user.save()
     .then(data => {
