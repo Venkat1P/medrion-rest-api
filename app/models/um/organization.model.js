@@ -28,7 +28,10 @@ const orgSchema = mongoose.Schema(
 
         org_title: String,
         org_main_header: String,
-        org_sub_header: String
+        org_sub_header: String,
+        
+        org_status: String,
+        org_no_of_licensed_modules: String
     }
 );
 module.exports = mongoose.model('Organization', orgSchema, 'um_organization');
