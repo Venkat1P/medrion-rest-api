@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const userUmSchema = mongoose.Schema(
     {
         user_code: String,
-        user_type: String,
+        user_type: Boolean,
         user_emailId: String,
         user_confirm_emailId: String,
         user_ssn: String,
