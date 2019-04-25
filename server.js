@@ -32,11 +32,17 @@ mongoose.connect(dbConfig.url, {
 
 // define a simple route
 app.get('/api', (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.json({ "message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes." });
+    // res.header('Access-Control-Allow-Origin', '*');
+    // res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    // res.header('Access-Control-Allow-Headers', 'Content-Type');
+    // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    // res.json({ "message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes." });
+
+    res.header("Access-Control-Allow-Origin", "*");
+       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+       res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+       res.json({ "message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes." });
+          next();
     next();
 });
 
