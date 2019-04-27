@@ -4,7 +4,9 @@ const UserSchema = mongoose.Schema(
     {
         username: String,
         mailId: String,
+        password: String,
         phone_number: String,
+        has_logged_in: Boolean,
         role: {
             role_type: String,
             permissions: [
