@@ -29,22 +29,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
-app.use(function(req, res, next) {
-
-    //to allow cross domain requests to send cookie information.
-    res.header('Access-Control-Allow-Credentials', true);
-    
-    // origin can not be '*' when crendentials are enabled. so need to set it to the request origin
-    res.header('Access-Control-Allow-Origin',  req.headers.origin);
-    
-    // list of methods that are supported by the server
-    res.header('Access-Control-Allow-Methods','OPTIONS,GET,PUT,POST,DELETE');
-    
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-    
-    next();
-    });
-
 app.use(session({
     key: 'user_sid',
     secret: 'somerandonstuffs',
@@ -80,10 +64,6 @@ app.route('/api/login')
             } else if (password !== user.password) {
                 res.json({ "isLoggedIn": false, "message": "Password is wrong" });
             } else {
-                res.header('Access-Control-Allow-Credentials', true);
-                res.header('Access-Control-Allow-Origin',  req.headers.origin);
-                res.header('Access-Control-Allow-Methods','OPTIONS,GET,PUT,POST,DELETE');    
-                res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
                 req.session.user = user;
                 res.json({ isLoggedIn: true, userDetails: user });
             }
