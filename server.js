@@ -67,7 +67,7 @@ app.route('/api/login')
             } else if (password !== user.password) {
                 res.json({ "isLoggedIn": false, "message": "Password is wrong" });
             } else {
-                req.session.user = user.dataValues;
+                req.session.user = user;
                 res.json({ isLoggedIn: true, userDetails: user });
             }
         });
