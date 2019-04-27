@@ -28,16 +28,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
-
-app.use(session({
-    key: 'user_sid',
-    secret: 'somerandonstuffs',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: 600000
-    }
+app.use(express.cookieSession({
+    key: 'myappname.sid',
+    secret: 'my secret',
+    cookie: { domain: '.medrion-daf7f.firebaseapp.com', maxAge: 600000 }
 }));
+// app.use(session({
+//     key: 'user_sid',
+//     secret: 'somerandonstuffs',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//         expires: 600000
+//     }
+// }));
 
 var sessionChecker = (req, res, next) => {
     if (req.session.user && req.cookies.user_sid) {
