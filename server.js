@@ -41,13 +41,14 @@ app.use(session({
 
 var sessionChecker = (req, res, next) => {
     if (req.session.user && req.cookies.user_sid) {
-        res.json({ isLoggedIn: true, message:"You are logged In!"});
+        res.json({ isLoggedIn: true, message: "You are logged In!" });
     } else {
         next();
     }
 };
 
 app.get('/api', sessionChecker, (req, res) => {
+    res.header('Access-Control-Allow-Credentials', true);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
@@ -67,20 +68,24 @@ app.route('/api/login')
             } else if (password !== user.password) {
                 res.json({ "isLoggedIn": false, "message": "Password is wrong" });
             } else {
+                res.header('Access-Control-Allow-Credentials', true);
+                res.header("Access-Control-Allow-Origin", "*");
+                res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
                 req.session.user = user;
                 res.json({ isLoggedIn: true, userDetails: user });
             }
         });
     });
 
-    app.get('/home', (req, res) => {
-        if (req.session.user && req.cookies.user_sid) {
-            res.sendFile(__dirname + '/home');
-        } else {
-            res.redirect('/login');
-        }
-    });
-    
+app.get('/home', (req, res) => {
+    if (req.session.user && req.cookies.user_sid) {
+        res.sendFile(__dirname + '/home');
+    } else {
+        res.redirect('/login');
+    }
+});
+
 
 // route for user logout
 app.get('/api/logout', (req, res) => {
