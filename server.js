@@ -68,7 +68,7 @@ app.route('/api/login')
                 res.json({ "isLoggedIn": false, "message": "Password is wrong" });
             } else {
                 req.session.user = user._id;
-                res.redirect('/home');
+                res.cookie('cid',req.cookies.user_sid);
                 res.json({ isLoggedIn: true, userDetails: user });
             }
         });
